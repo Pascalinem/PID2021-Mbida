@@ -16,7 +16,9 @@ class LocalitySeeder extends Seeder
     public function run()
     {
         //Empty tale first
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         Locality::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         //Define data
         $localities=[

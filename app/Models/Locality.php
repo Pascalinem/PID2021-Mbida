@@ -28,6 +28,13 @@ class Locality extends Model
      */
     public $timestamps = false;
 
+    //Get locations linked to a specific locality
+
+    public function locations(){
+
+      return $this->hasMany(Location::class);
+    }
+
 
 
 }
