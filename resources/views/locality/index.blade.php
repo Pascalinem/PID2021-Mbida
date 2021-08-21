@@ -3,7 +3,7 @@
 @section('title','Liste des localités')
 
 @section('content')
-<h1>Liste des{{ $resource }}</h1>
+<h1>Liste des {{ $resource }}</h1>
 <h1>
     <table>
         <thead>
@@ -12,6 +12,7 @@
                 <th>Localité</th>
             </tr>
         </thead>
+    </h1>
         <tbody>
             @foreach ($localities as $locality)
             <tr>
@@ -22,6 +23,6 @@
         </tbody>    
 
     </table>
-</h1>
+
     
 @endsection
