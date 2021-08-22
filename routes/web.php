@@ -6,6 +6,8 @@ use App\Http\Controllers\LocalityController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ShowController;
+use App\Http\Controllers\RepresentationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +33,14 @@ Route::get('/locality/{id}', [LocalityController::class,'show'])->where('id','[0
 Route::get('/location', [LocationController::class, 'index']) ->name('location_index');
 Route::get('/location/{id}', [LocationController::class,'show'])->where('id','[0-9]+')->name('location_show');
 
+Route::get('/representation', [RepresentationController::class, 'index']) ->name('representation_index');
+Route::get('/representation/{id}', [RepresentationController::class,'show'])->where('id','[0-9]+')->name('representation_show');
+
 Route::get('/role', [RoleController::class, 'index']) ->name('role_index');
 Route::get('/role/{id}', [RoleController::class,'show'])->where('id','[0-9]+')->name('role_show');
 
 Route::get('/type', [TypeController::class, 'index']) ->name('type_index');
 Route::get('/type/{id}', [TypeController::class,'show'])->where('id','[0-9]+')->name('type_show');
 
+Route::get('/show', [ShowController::class, 'index']) ->name('show_index');
+Route::get('/show/{id}', [ShowController::class,'show'])->where('id','[0-9]+')->name('show_show');

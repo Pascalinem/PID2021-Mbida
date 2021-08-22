@@ -38,4 +38,25 @@ class Location extends Model
         return $this->belongsTo(locality::class);
         
     }
+
+     /**
+     * Get all of the shows for the Location
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function shows()
+    {
+        return $this->hasMany(Show::class);
+    }
+
+
+    /**
+     * Get all of the representations for the Location
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function representations()
+    {
+        return $this->hasMany(Representation::class);
+    }
 }
