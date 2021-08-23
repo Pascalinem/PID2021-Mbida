@@ -23,4 +23,13 @@ class Artist extends Model
      * @var bool
      */
     public $timestamps=false;
+
+    /**
+     * The types that belong to the aRTIST
+     *
+     */
+    public function types()
+    {
+        return $this->belongsToMany(Type::class);
+    }
 }
