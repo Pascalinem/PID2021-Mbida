@@ -43,8 +43,6 @@ class ArtistType extends Model
 
     /**
      * Get the type that owns the ArtistType
-     *
-     * 
      */
     public function type()
     {
