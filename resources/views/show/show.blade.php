@@ -23,6 +23,53 @@
         @else
         <p><em>Non réservable</em></p>
         @endif
+
+        @if ($show->representations->count()>=1)
+        <ul>
+        @foreach ($show->representations as $representation)
+            <li>{{ $representation->when }}</li>
+        @endforeach
+        </ul>
+        @else
+        <p>Aucune représentation</p>
+
+            
+        @endif
+
+        <h2>Liste des artistes du spectacle </h2>
+       {{--   <ol>
+        @foreach ($show->artistTypes as $collaborateur)
+           <li>
+               {{ $collaborateur->artist->firstname }} {{ $collaborateur->artist->lastname}} 
+              <i>  {{ $collaborateur->type->type }}</i>
+        </li> 
+        @endforeach
+        </ol> --}}
+
+        <p><strong>Auteur:</strong>
+            @foreach ($collaborateurs['auteur'] as $auteur)
+                {{ $auteur->firstname }} {{ $auteur->lastname }}
+                @if($loop->iteration == $loop->count-1) et 
+                @elseif(!$loop->last), @endif    
+            @endforeach  
+        </p>
+
+        <p><strong>Metteur en scène:</strong>
+            @foreach ($collaborateurs['scénographe'] as $scenographe)
+                {{ $scenographe->firstname }} 
+                {{ $scenographe->lastname }}@if($loop->iteration == $loop->count-1) et 
+                @elseif(!$loop->last), @endif
+            @endforeach
+            </p>
+
+            
+            <p><strong>Distribution:</strong>
+            @foreach ($collaborateurs['comédien'] as $comedien)
+                {{ $comedien->firstname }} 
+                {{ $comedien->lastname }}@if($loop->iteration == $loop->count-1) et 
+                @elseif(!$loop->last), @endif
+            @endforeach
+            </p>  
     </article>
 
     <nav><a href="{{ route('show_index') }}">Retour à l'index</a></nav>

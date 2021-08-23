@@ -4,7 +4,7 @@
 @section('content')
 
   <p>  {{ $type->id }} {{ $type->type }}</p>
-  <h5>Liste d'artiste avec cette fonction</h5>
+  <h5>Liste d'artistes avec cette fonction</h5>
   <ol>
   @foreach ($type->artists as $artist)
      <li>{{ $artist->firstname }} {{ $artist->lastname }}</li> 

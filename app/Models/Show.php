@@ -45,5 +45,15 @@ class Show extends Model
     {
         return $this->belongsTo(Location::class);
     }
+
+    /**
+     * The artisttypes that belong to the Show
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function artistTypes()
+    {
+        return $this->belongsToMany(ArtistType::class);
+    }
     
 }
