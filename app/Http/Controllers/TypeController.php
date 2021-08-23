@@ -70,6 +70,37 @@ class TypeController extends Controller
     public function edit($id)
     {
         //
+        $type = Type::find($id);
+        
+        return view('type.edit',[
+            'type' => $type,
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+	   //Validation des données du formulaire
+        $validated = $request->validate([
+            'type' => 'required|max:60',
+            
+        ]);
+
+	   //Le formulaire a été validé, nous récupérons l’typee à modifier
+        $type = Type::find($id);
+
+	   //Mise à jour des données modifiées et sauvegarde dans la base de données
+        $type->update($validated);
+
+        return view('type.show',[
+            'type' => $type,
+        ]);
     }
 
     /**

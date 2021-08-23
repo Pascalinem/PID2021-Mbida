@@ -39,6 +39,10 @@ Route::put('/artist/{id}', [App\Http\Controllers\ArtistController::class, 'updat
 
 Route::get('/locality', [LocalityController::class, 'index']) ->name('locality_index');
 Route::get('/locality/{id}', [LocalityController::class,'show'])->where('id','[0-9]+')->name('locality_show');
+Route::get('/locality/edit/{id}', [App\Http\Controllers\LocalityController::class, 'edit'])
+	->where('id', '[0-9]+')->name('locality_edit');
+Route::put('/locality/{id}', [App\Http\Controllers\LocalityController::class, 'update'])
+	->where('id', '[0-9]+')->name('locality_update');
 
 Route::get('/location', [LocationController::class, 'index']) ->name('location_index');
 Route::get('/location/{id}', [LocationController::class,'show'])->where('id','[0-9]+')->name('location_show');
@@ -48,9 +52,17 @@ Route::get('/representation/{id}', [RepresentationController::class,'show'])->wh
 
 Route::get('/role', [RoleController::class, 'index']) ->name('role_index');
 Route::get('/role/{id}', [RoleController::class,'show'])->where('id','[0-9]+')->name('role_show');
+Route::get('/role/edit/{id}', [App\Http\Controllers\RoleController::class, 'edit'])
+	->where('id', '[0-9]+')->name('role_edit');
+Route::put('/role/{id}', [App\Http\Controllers\RoleController::class, 'update'])
+	->where('id', '[0-9]+')->name('role_update');
 
 Route::get('/type', [TypeController::class, 'index']) ->name('type_index');
 Route::get('/type/{id}', [TypeController::class,'show'])->where('id','[0-9]+')->name('type_show');
+Route::get('/type/edit/{id}', [App\Http\Controllers\TypeController::class, 'edit'])
+	->where('id', '[0-9]+')->name('type_edit');
+Route::put('/type/{id}', [App\Http\Controllers\TypeController::class, 'update'])
+	->where('id', '[0-9]+')->name('type_update');
 
 Route::get('/show', [ShowController::class, 'index']) ->name('show_index');
 Route::get('/show/{id}', [ShowController::class,'show'])->where('id','[0-9]+')->name('show_show');

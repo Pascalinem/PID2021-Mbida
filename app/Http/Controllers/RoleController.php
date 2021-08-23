@@ -70,6 +70,37 @@ class RoleController extends Controller
     public function edit($id)
     {
         //
+        $role = Role::find($id);
+        
+        return view('role.edit',[
+            'role' => $role,
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+	   //Validation des données du formulaire
+        $validated = $request->validate([
+            'role' => 'required|max:60',
+        
+        ]);
+
+	   //Le formulaire a été validé, nous récupérons l’rolee à modifier
+        $role = Role::find($id);
+
+	   //Mise à jour des données modifiées et sauvegarde dans la base de données
+        $role->update($validated);
+
+        return view('role.show',[
+            'role' => $role,
+        ]);
     }
 
     /**
