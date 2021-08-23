@@ -44,4 +44,12 @@ class Representation extends Model
          */
         return $this->belongsTo(Location::class);
     }
+
+    /**
+     * The users that reserved for the current Representation
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

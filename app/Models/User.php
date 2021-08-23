@@ -55,4 +55,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
+/**
+ * The representations the User is going to
+ */
+public function representations()
+{
+    return $this->belongsToMany(Representation::class);
+}
+
+
 }
