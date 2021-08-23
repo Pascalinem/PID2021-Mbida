@@ -24,8 +24,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
 Route::get('/artist', [ArtistController::class, 'index']) ->name('artist_index');
 Route::get('/artist/{id}', [ArtistController::class,'show'])->where('id','[0-9]+')->name('artist_show');
+Route::get('/artist/edit/{id}', [App\Http\Controllers\ArtistController::class, 'edit'])
+	->where('id', '[0-9]+')->name('artist_edit');
+Route::put('/artist/{id}', [App\Http\Controllers\ArtistController::class, 'update'])
+	->where('id', '[0-9]+')->name('artist_update');
 
 Route::get('/locality', [LocalityController::class, 'index']) ->name('locality_index');
 Route::get('/locality/{id}', [LocalityController::class,'show'])->where('id','[0-9]+')->name('locality_show');

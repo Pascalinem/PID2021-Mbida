@@ -24,8 +24,8 @@ class UserSeeder extends Seeder
         $users=[
 
             [
-                'login'=>'test1',
-                'password'=>'test1',
+                'login'=>'testtest01',
+                'password'=>'testtest0  1',
                 'firstname'=>'Test1',
                 'lastname'=>'User1',
                 'email'=>'test1@mail.be',
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'login'=>'test2',
-                'password'=>'test2',
+                'password'=>'testtest02',
                 'firstname'=>'Test2',
                 'lastname'=>'User2',
                 'email'=>'test2@mail.be',
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'login'=>'test3',
-                'password'=>'test3',
+                'password'=>'testtest03',
                 'firstname'=>'Test3',
                 'lastname'=>'User3',
                 'email'=>'test3@mail.be',
@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'login'=>'test4',
-                'password'=>'test4',
+                'password'=>'testtest04',
                 'firstname'=>'Test4',
                 'lastname'=>'User4',
                 'email'=>'test4@mail.be',

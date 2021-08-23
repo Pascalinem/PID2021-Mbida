@@ -68,6 +68,12 @@ class ArtistController extends Controller
     public function edit($id)
     {
         //
+        $artist=Artist::find($id);
+
+        return view('artist.edit',[
+            'artist'=> $artist,
+
+        ]);
     }
 
     /**
@@ -79,7 +85,18 @@ class ArtistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Validation des données
+        $validated= $request->validate([
+            'firstname'=>'required|max:60',
+            'lastname'=>'required|max:60',
+        ]);
+
+        //mise à jour des données validées
+        $artist->update($validated);
+
+        return view('artist.show',[
+            'artist'=>$artist,
+        ]);
     }
 
     /**
