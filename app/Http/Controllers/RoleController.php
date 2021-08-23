@@ -88,7 +88,7 @@ class RoleController extends Controller
     {
 	   //Validation des données du formulaire
         $validated = $request->validate([
-            'role' => 'required|max:60',
+            'role' => 'required|max:30',
         
         ]);
 
@@ -103,17 +103,6 @@ class RoleController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
