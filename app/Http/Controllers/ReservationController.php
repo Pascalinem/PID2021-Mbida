@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Locality;
+use App\Models\Reservation;
 
-class LocalityController extends Controller
+class ReservationController extends Controller
 {
-    //
     /**
      * Display a listing of the resource.
      *
@@ -16,11 +15,11 @@ class LocalityController extends Controller
     public function index()
     {
         //
-        $localities= Locality::all();
-        return view('locality.index',
+        $reservations= Reservation::all();
+        return view('reservation.index',
     [
-        'localities'=>$localities,
-        'resource'=>'localites',
+        'reservations'=>$reservations,
+        'resource'=>'réservations',
     ]);
     }
 
@@ -32,6 +31,7 @@ class LocalityController extends Controller
     public function create()
     {
         //
+        return view('update');
     }
 
     /**
@@ -43,6 +43,15 @@ class LocalityController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'representation_id' => 'required',
+            'user_id' => 'required',
+            'places' => 'required',
+        ]);
+    
+        $reservation = Reservation::create($validatedData);
+    
+        return redirect('/reservation')->with('success', 'Réservation créée avec succèss');
     }
 
     /**
@@ -54,10 +63,12 @@ class LocalityController extends Controller
     public function show($id)
     {
         //
-        $locality= Locality::find($id);
-        return view('locality.show', [
-            'locality'=>$locality,
+        $reservation= Reservation::find($id);
+        return view('reservation.show', [
+            'reservation'=>$reservation,
+           
         ]);
+
     }
 
     /**
@@ -69,10 +80,9 @@ class LocalityController extends Controller
     public function edit($id)
     {
         //
-        $locality = Locality::find($id);
-        
-        return view('locality.edit',[
-            'locality' => $locality,
+        $reservation= Reservation::find($id);
+        return view('reservation.edit', [
+            'reservation'=>$reservation,
         ]);
     }
 
@@ -85,23 +95,23 @@ class LocalityController extends Controller
      */
     public function update(Request $request, $id)
     {
-	   //Validation des données du formulaire
-        $validated = $request->validate([
-            'postal_code' => 'required|max:6',
-            'locality' => 'required|max:60',
+         //Validation des données du formulaire
+         $validated = $request->validate([
+            'representation_id' => 'required',
+            'user-id' => 'required',
+            'places'=>'required',
         ]);
 
-	   //Le formulaire a été validé, nous récupérons l’localitye à modifier
-        $locality = Locality::find($id);
+	   //Le formulaire a été validé, nous récupérons l’reservatione à modifier
+        $reservation = Reservation::find($id);
 
 	   //Mise à jour des données modifiées et sauvegarde dans la base de données
-        $locality->update($validated);
+        $reservation->update($validated);
 
-        return view('locality.show',[
-            'locality' => $locality,
+        return view('reservation.show',[
+            'reservation' => $reservation,
         ]);
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -112,12 +122,11 @@ class LocalityController extends Controller
     public function destroy($id)
     {
         //
-           //
-           $locality=Locality::find($id);
-           $locality->delete();
-           
-    
-            return redirect('/locality')->with('success','Le lieu a bien été supprimé.');
-    }
+        $reservation=Reservation::find($id);
+        $reservation->delete();
+        
+ 
+         return redirect('/reservation')->with('success','La reservation a bien été supprimée.');
 
+    }
 }

@@ -18,6 +18,13 @@
                     <td> 
                         <a href="{{ route('artist_show',$artist->id) }}"> {{ $artist->lastname }}</a>
                     </td>
+                    <td>
+                        <form action="{{ route('artist_destroy', $artist->id ) }}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <button>Supprimer artiste</button>
+                        </form>
+                    </td>
 
                 </tr>
                 

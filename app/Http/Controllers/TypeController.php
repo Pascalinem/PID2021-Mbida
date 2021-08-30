@@ -114,5 +114,11 @@ class TypeController extends Controller
     public function destroy($id)
     {
         //
+           //
+           $type=Type::find($id);
+           $type->delete();
+           
+    
+            return redirect('/type')->with('success','L\'type a bien été supprimé.');
     }
 }

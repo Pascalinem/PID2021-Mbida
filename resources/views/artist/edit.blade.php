@@ -27,7 +27,7 @@
 	       @if(old('lastname'))
                 value="{{ old('lastname') }}" 
             @else
-                value="{{ $artist->firstname }}" 
+                value="{{ $artist->lastname }}" 
             @endif
 	           class="@error('lastname') is-invalid @enderror">
 

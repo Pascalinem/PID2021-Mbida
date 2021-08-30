@@ -107,6 +107,11 @@ class ArtistController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+           $artist=Artist::find($id);
+           $artist->delete();
+           
+    
+            return redirect('/artist')->with('success','L\'artiste a bien été supprimé.');
     }
 }

@@ -6,9 +6,9 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Representation;
-use App\Models\RepresentationUser;
+use App\Models\Reservation;
 
-class RepresentationUserSeeder extends Seeder
+class ReservationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,11 +19,11 @@ class RepresentationUserSeeder extends Seeder
     {
         //Empty the table first
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
-        DB::table('representation_user')->truncate();
+        DB::table('reservations')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
          //Define data
-         $representationUsers = [
+         $reservations = [
             [
                 'user_firstname'=>'Test1',
                 'user_lastname'=>'User1',
@@ -52,7 +52,7 @@ class RepresentationUserSeeder extends Seeder
         ];
         
         //Prepare the data
-        foreach ($representationUsers as &$data) {
+        foreach ($reservations as &$data) {
             
             //Search the user for a given user's firstname and lastname
             $user = User::where([
@@ -76,6 +76,6 @@ class RepresentationUserSeeder extends Seeder
         unset($data);
 
         //Insert data in the table
-        DB::table('representation_user')->insert($representationUsers);
+        DB::table('reservations')->insert($reservations);
     }
 }
